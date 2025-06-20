@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion / Création de compte</title>
+  <link rel="stylesheet" href="pageaccueil.css" />
+</head>
+<body>
+
+  <!-- Formulaire de connexion -->
+  <div class="container" id="login-form">
+    <h2>Connexion</h2>
+    <form id="loginForm">
+      <input type="email" id="login-email" placeholder="Adresse e-mail" required />
+      <div class="input-group">
+        <input type="password" id="login-password" placeholder="Mot de passe" required />
+        <i onclick="togglePassword('login-password')">👁️</i>
+      </div>
+      <button type="submit">Se connecter</button>
+    </form>
+    <div class="toggle">
+      <p>Pas encore de compte ? <a onclick="toggleView('role-select')">Créer un compte</a></p>
+    </div>
+  </div>
+
+  <!-- Choix du rôle -->
+  <div class="container" id="role-select" style="display:none">
+    <h2>Choisissez votre profil</h2>
+    <div class="toggle">
+      <button onclick="toggleView('signup-client')">Client organisateur</button>
+      <button onclick="toggleView('signup-presta')">Prestataire de services</button>
+    </div>
+    <div class="toggle">
+      <p><a onclick="toggleView('login-form')">Retour à la connexion</a></p>
+    </div>
+  </div>
+
+  <!-- Formulaire d'inscription Client -->
+  <div class="container" id="signup-client" style="display:none">
+    <h2>Créer un compte Client</h2>
+    <form id="clientForm">
+      <input type="text" id="client-name" name="name" placeholder="Nom complet" required />
+      <input type="email" id="client-email" name="email" placeholder="Adresse e-mail" required />
+      <div class="input-group">
+        <input type="password" id="client-password" name="password" placeholder="Mot de passe" required />
+        <i onclick="togglePassword('client-password')">👁️</i>
+      </div>
+      <button type="submit">Créer un compte client</button>
+    </form>
+    <div class="toggle">
+      <p><a onclick="toggleView('role-select')">Changer de rôle</a></p>
+    </div>
+  </div>
+
+  <!-- Formulaire d'inscription Prestataire -->
+  <div class="container" id="signup-presta" style="display:none">
+    <h2>Créer un compte Prestataire</h2>
+    <form id="prestaForm">
+      <input type="text" id="presta-name" name="name" placeholder="Nom complet" required />
+      <input type="email" id="presta-email" name="email" placeholder="Adresse e-mail" required />
+      <div class="input-group">
+        <input type="password" id="presta-password" name="password" placeholder="Mot de passe" required />
+        <i onclick="togglePassword('presta-password')">👁️</i>
+      </div>
+
+      <input type="text" id="salle-name" placeholder="Nom de la salle" required />
+      <input type="text" id="salle-address" placeholder="Adresse de la salle" required />
+      <input type="text" id="salle-phone" placeholder="Téléphone" required />
+      <input type="text" id="salle-type" placeholder="Type de prestations" required />
+      <input type="number" id="salle-capacity" placeholder="Capacité d’accueil" required />
+      <textarea id="salle-description" placeholder="Description de la salle" style="resize: none;" required></textarea>
+
+      <button type="submit">Créer un compte prestataire</button>
+    </form>
+    <div class="toggle">
+      <p><a onclick="toggleView('role-select')">Changer de rôle</a></p>
+    </div>
+  </div>
+
+  <!-- Script de gestion des vues et mots de passe -->
+  <script>
+    function toggleView(id) {
+      const containers = ['login-form', 'role-select', 'signup-client', 'signup-presta'];
+      containers.forEach(el => document.getElementById(el).style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+  </script>
+
+  <!-- Intégration du JS backend -->
+  <script src="auth.js"></script>
+</body>
+</html>

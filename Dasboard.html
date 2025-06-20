@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau de bord</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f4f8;
+      margin: 0;
+      padding: 2rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      color: #333;
+    }
+    .logout {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    .logout:hover {
+      background-color: #c82333;
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+    }
+    .btn-primary {
+      background: #4CAF50;
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-primary:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bienvenue sur votre tableau de bord</h1>
+    <button class="logout" onclick="logout()">Se déconnecter</button>
+  </header>
+
+  <!-- Tableau de bord client -->
+  <section id="client-section" class="section">
+    <div class="card">
+      <h2>Créer un événement</h2>
+      <button class="btn-primary" onclick="location.href='chatbot.html'">Créer un événement</button>
+    </div>
+    <div class="card">
+      <h2>Mes événements</h2>
+      <div id="client-events"></div>
+    </div>
+  </section>
+
+  <!-- Tableau de bord prestataire -->
+  <section id="presta-section" class="section">
+    <div class="card">
+      <h2>Mes clients & prestations</h2>
+      <div id="presta-clients"></div>
+    </div>
+    <div class="card">
+      <h2>Calendrier de réservation</h2>
+      <div id="presta-calendar">📅 À venir...</div>
+    </div>
+  </section>
+
+  <!-- Tableau de bord admin (optionnel pour MVP) -->
+  <section id="admin-section" class="section">
+    <div class="card">
+      <h2>Administration</h2>
+      <p>Statistiques, gestion des comptes, validations manuelles, etc.</p>
+    </div>
+  </section>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
